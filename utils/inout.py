@@ -4,10 +4,11 @@
 """
 
 import os
-#import index
+import index
 import json
 import xlrd
 import xlwt
+import codecs
 
 
 def getSourceFilePath(fileName):
@@ -80,14 +81,14 @@ def loadData2Json(filePath):
     '''
     jsonList = []
     if os.path.exists(filePath):
-        fr = open(filePath,'r',encoding='utf-8')
+        fr = codecs.open(filePath,'rb')
         i = 1
         while True:
             line = fr.readline()
             if line:
                 try:
                     temp = line.strip()
-                    lineJson = json.loads(temp,encoding='utf-8')
+                    lineJson = json.loads(temp)
                     # print(i,type(lineJson),str(lineJson))
                     i += 1
                     jsonList.append(lineJson)
@@ -101,7 +102,7 @@ def loadData2Json(filePath):
 def readListFromTxt(filePath):
     infoList = []
     if os.path.exists(filePath):
-        f = open(filePath,'r')
+        f = codecs.open(filePath,'rb')
         while True:
             line = f.readline()
             if line:
@@ -113,11 +114,21 @@ def readListFromTxt(filePath):
     return infoList
 
 
+def liststr2listlist(liststr):
+    resultList = []
+    for item in liststr:
+        resultList.append(item.strip().split(','))
+    return resultList
+
+
 def writeList2Txt(filePath,infoList):
     if infoList:
-        f = open(filePath,'w',encoding='utf-8')
+        f = codecs.open(filePath,'wb')
         for i in range(len(infoList)):
-            outputLine = infoList[i].strip()
+            if isinstance(infoList[i],list):
+                outputLine = ','.join(infoList[i]).strip()
+            elif isinstance(infoList[i],str):
+                outputLine = infoList[i].strip()
             f.write(outputLine + '\n')
         f.close()
 
