@@ -2,9 +2,17 @@
 __pycache__/
 *.py[cod]
 *$py.class
+<<<<<<< HEAD
 
 *.pyc
 *.xml
+=======
+*.txt
+*.pyc
+*.xml
+*.xls
+*.xlsx
+>>>>>>> 93d4f45fa1cc8926e527b9c592d3bdb392942c04
 
 
 *.csv

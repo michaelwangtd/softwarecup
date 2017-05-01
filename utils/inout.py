@@ -4,10 +4,18 @@
 """
 
 import os
+<<<<<<< HEAD
 #import index
 import json
 import xlrd
 import xlwt
+=======
+import index
+import json
+import xlrd
+import xlwt
+import codecs
+>>>>>>> 93d4f45fa1cc8926e527b9c592d3bdb392942c04
 
 
 def getSourceFilePath(fileName):
@@ -43,6 +51,15 @@ def getUnprocessedFilePath(fileName):
         if os.path.exists(filePath):
             return filePath
 
+<<<<<<< HEAD
+=======
+def getDataPath(fileName):
+    '''
+        获取data目录文件路径
+    '''
+    return os.path.join(index.ROOTPATH,index.DATA,fileName)
+
+>>>>>>> 93d4f45fa1cc8926e527b9c592d3bdb392942c04
 
 def writeContent2Excel(infoList,outputFilePath):
     """
@@ -80,14 +97,22 @@ def loadData2Json(filePath):
     '''
     jsonList = []
     if os.path.exists(filePath):
+<<<<<<< HEAD
         fr = open(filePath,'r',encoding='utf-8')
+=======
+        fr = codecs.open(filePath,'rb')
+>>>>>>> 93d4f45fa1cc8926e527b9c592d3bdb392942c04
         i = 1
         while True:
             line = fr.readline()
             if line:
                 try:
                     temp = line.strip()
+<<<<<<< HEAD
                     lineJson = json.loads(temp,encoding='utf-8')
+=======
+                    lineJson = json.loads(temp)
+>>>>>>> 93d4f45fa1cc8926e527b9c592d3bdb392942c04
                     # print(i,type(lineJson),str(lineJson))
                     i += 1
                     jsonList.append(lineJson)
@@ -101,7 +126,11 @@ def loadData2Json(filePath):
 def readListFromTxt(filePath):
     infoList = []
     if os.path.exists(filePath):
+<<<<<<< HEAD
         f = open(filePath,'r',encoding='utf-8')
+=======
+        f = codecs.open(filePath,'rb')
+>>>>>>> 93d4f45fa1cc8926e527b9c592d3bdb392942c04
         while True:
             line = f.readline()
             if line:
@@ -113,11 +142,29 @@ def readListFromTxt(filePath):
     return infoList
 
 
+<<<<<<< HEAD
 def writeList2Txt(filePath,infoList):
     if infoList:
         f = open(filePath,'w',encoding='utf-8')
         for i in range(len(infoList)):
             outputLine = infoList[i].strip()
+=======
+def liststr2listlist(liststr):
+    resultList = []
+    for item in liststr:
+        resultList.append(item.strip().split(','))
+    return resultList
+
+
+def writeList2Txt(filePath,infoList):
+    if infoList:
+        f = codecs.open(filePath,'wb')
+        for i in range(len(infoList)):
+            if isinstance(infoList[i],list):
+                outputLine = ','.join(infoList[i]).strip()
+            elif isinstance(infoList[i],str):
+                outputLine = infoList[i].strip()
+>>>>>>> 93d4f45fa1cc8926e527b9c592d3bdb392942c04
             f.write(outputLine + '\n')
         f.close()
 
