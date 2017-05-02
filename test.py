@@ -6,12 +6,14 @@ from utils import inout
 from utils import util
 from collections import OrderedDict
 import re
-<<<<<<< HEAD
-=======
 import index
 import codecs
 import json
 
+
+start = 0.0
+re = int(start)
+print re
 
 # name = '家'
 
@@ -33,16 +35,12 @@ import json
 # print re[0]
 
 
->>>>>>> 93d4f45fa1cc8926e527b9c592d3bdb392942c04
 
 # testStr = 'O1084'
 # if re.search('^O',testStr):
 #     print(testStr)
 
 # testList = ['O1001', 'O1007', 'O1011', 'O1039', 'O1043', 'O1050', 'O1069', 'O107', 'O1073', 'O1079']
-<<<<<<< HEAD
-# print(sorted(testList))
-=======
 # print(sorted(testList))
 
 # print index.ROOTPATH
@@ -78,4 +76,3 @@ import json
 # print type(re1)
 
 
->>>>>>> 93d4f45fa1cc8926e527b9c592d3bdb392942c04
