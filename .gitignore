@@ -2,12 +2,22 @@
 __pycache__/
 *.py[cod]
 *$py.class
+<<<<<<< HEAD
+
+*.pyc
+*.xml
+=======
 *.txt
 *.pyc
 *.xml
 *.xls
 *.xlsx
+<<<<<<< HEAD
 data/
+=======
+>>>>>>> 93d4f45fa1cc8926e527b9c592d3bdb392942c04
+
+>>>>>>> a11a4eca13cc085c15f26775ee487c9ac340957f
 
 *.csv
 *.json

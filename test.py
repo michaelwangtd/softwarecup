@@ -40,6 +40,10 @@ exit(0)
 
 
 
+start = 0.0
+re = int(start)
+print re
+
 # name = '家'
 
 # testPath = index.ROOTPATH+'\\test_json.txt'
