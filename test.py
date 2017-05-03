@@ -12,6 +12,23 @@ import json
 import pandas as pd
 import csv
 import numpy as np
+import codecs
+
+
+
+inFilePath = inout.getDataPath('demo_proxy1005.txt')
+outFilePath = inout.getDataPath('demo_proxy1005_test.csv')
+data = inout.readListFromTxt(inFilePath)
+fw = codecs.open(outFilePath,'wb')
+for item in data:
+    tempList = []
+    itemList = item.split('\t')
+    tempList.append(itemList[1])
+    tempList.append(itemList[8])
+    outputLine = ','.join(tempList)
+    fw.write(outputLine + '\n')
+    print outputLine
+fw.close()
 
 
 
@@ -25,13 +42,13 @@ import numpy as np
 # for line in reader:
 #     print line
 
-inputFileName = 'rawTrainFeature.csv'
-inputFilePath = inout.getDataPath(inputFileName)
-
-data = pd.read_csv(inputFilePath)
-print type(data)
-print data
-exit(0)
+# inputFileName = 'rawTrainFeature.csv'
+# inputFilePath = inout.getDataPath(inputFileName)
+#
+# data = pd.read_csv(inputFilePath)
+# print type(data)
+# print data
+# exit(0)
 #D:\workstation\repositories\softwarecup\data\rawTrainFeature.csv
 # p = np.loadtxt(inputFilePath, delimiter=',', skiprows=1)
 # print type(p)
@@ -40,9 +57,9 @@ exit(0)
 
 
 
-start = 0.0
-re = int(start)
-print re
+# start = 0.0
+# re = int(start)
+# print re
 
 # name = '家'
 
