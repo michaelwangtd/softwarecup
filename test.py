@@ -9,6 +9,35 @@ import re
 import index
 import codecs
 import json
+import pandas as pd
+import csv
+import numpy as np
+
+
+
+# print inputFilePath
+# data = pd.read_csv(inputFilePath)
+# x = data[[0,1,2,3]]
+# print x
+
+# reader = csv.reader(file(inputFilePath,'rb'))
+# print type(reader)
+# for line in reader:
+#     print line
+
+inputFileName = 'rawTrainFeature.csv'
+inputFilePath = inout.getDataPath(inputFileName)
+
+data = pd.read_csv(inputFilePath)
+print type(data)
+print data
+exit(0)
+#D:\workstation\repositories\softwarecup\data\rawTrainFeature.csv
+# p = np.loadtxt(inputFilePath, delimiter=',', skiprows=1)
+# print type(p)
+# print p[]
+
+
 
 
 # name = '家'
