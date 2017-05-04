@@ -15,20 +15,24 @@ import numpy as np
 import codecs
 
 
+# inFilePath = inout.getDataPath('demo_proxy1005.csv')
+# data = pd.read_csv(inFilePath,header=None)
+# print data
 
-inFilePath = inout.getDataPath('demo_proxy1005.txt')
-outFilePath = inout.getDataPath('demo_proxy1005_test.csv')
-data = inout.readListFromTxt(inFilePath)
-fw = codecs.open(outFilePath,'wb')
-for item in data:
-    tempList = []
-    itemList = item.split('\t')
-    tempList.append(itemList[1])
-    tempList.append(itemList[8])
-    outputLine = ','.join(tempList)
-    fw.write(outputLine + '\n')
-    print outputLine
-fw.close()
+
+# inFilePath = inout.getDataPath('demo_proxy1005.txt')
+# outFilePath = inout.getDataPath('demo_proxy1005_test.csv')
+# data = inout.readListFromTxt(inFilePath)
+# fw = codecs.open(outFilePath,'wb')
+# for item in data:
+#     tempList = []
+#     itemList = item.split('\t')
+#     tempList.append(itemList[1])
+#     tempList.append(itemList[8])
+#     outputLine = ','.join(tempList)
+#     fw.write(outputLine + '\n')
+#     print outputLine
+# fw.close()
 
 
 

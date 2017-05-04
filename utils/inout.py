@@ -10,44 +10,56 @@ import xlrd
 import xlwt
 import codecs
 
-def getSourceFilePath(fileName):
-    '''
-    默认的路径为：'rootPath/data/source/'
-    :param fileName:
-    :return:完整的文件路径
-    '''
-    if fileName:
-        filePath = os.path.join(index.ROOTPATH,index.DATA,index.SOURCE,fileName)
-        return filePath
-
-
-def getProcessedFilePath(fileName):
-    '''
-    默认的路径为：'rootPath/data/processed/'
-    :param fileName:
-    :return:完整的文件路径
-    '''
-    if fileName:
-        filePath = os.path.join(index.ROOTPATH,index.DATA,index.PROCESSED,fileName)
-        return filePath
-
-
-def getUnprocessedFilePath(fileName):
-    '''
-    默认的路径为：'rootPath/data/unprocessed/'
-    :param fileName:
-    :return:完整的文件路径
-    '''
-    if fileName:
-        filePath = os.path.join(index.ROOTPATH,index.DATA,index.UNPROCESSED,fileName)
-        if os.path.exists(filePath):
-            return filePath
+# def getSourceFilePath(fileName):
+#     '''
+#     默认的路径为：'rootPath/data/source/'
+#     :param fileName:
+#     :return:完整的文件路径
+#     '''
+#     if fileName:
+#         filePath = os.path.join(index.ROOTPATH,index.DATA,index.SOURCE,fileName)
+#         return filePath
+#
+#
+# def getProcessedFilePath(fileName):
+#     '''
+#     默认的路径为：'rootPath/data/processed/'
+#     :param fileName:
+#     :return:完整的文件路径
+#     '''
+#     if fileName:
+#         filePath = os.path.join(index.ROOTPATH,index.DATA,index.PROCESSED,fileName)
+#         return filePath
+#
+#
+# def getUnprocessedFilePath(fileName):
+#     '''
+#     默认的路径为：'rootPath/data/unprocessed/'
+#     :param fileName:
+#     :return:完整的文件路径
+#     '''
+#     if fileName:
+#         filePath = os.path.join(index.ROOTPATH,index.DATA,index.UNPROCESSED,fileName)
+#         if os.path.exists(filePath):
+#             return filePath
 
 def getDataPath(fileName):
     '''
-        获取data目录文件路径
+         获取data目录文件路径
     '''
     return os.path.join(index.ROOTPATH,index.DATA,fileName)
+
+def getDataPreparePath(fileName):
+    '''
+        获取data/prepare目录下路径
+    '''
+    return os.path.join(index.ROOTPATH,index.DATA,index.PREPARE,fileName)
+
+def getDataRegularPath(fileName):
+    '''
+        获取data/prepare目录下路径
+    '''
+    return os.path.join(index.ROOTPATH,index.DATA,index.REGULAR,fileName)
 
 def writeContent2Excel(infoList,outputFilePath):
     """

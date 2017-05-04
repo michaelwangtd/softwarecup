@@ -88,8 +88,8 @@ if __name__ == '__main__':
         for item in v:
             item.append(int(item[4])/int(item[3]))
             finalList.append(item)
-    # 将所有记录输出到csv
-    # inout.writeContent2Excel(finalList,outputFilePath)
+    #将所有记录输出到csv
+    inout.writeContent2Excel(finalList,outputFilePath)
 
 
     # ## 3 将O1014所有出现的记录归档到字典中
