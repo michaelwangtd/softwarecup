@@ -42,7 +42,9 @@ import codecs
 #         filePath = os.path.join(index.ROOTPATH,index.DATA,index.UNPROCESSED,fileName)
 #         if os.path.exists(filePath):
 #             return filePath
-
+'''
+    获取文件路径
+'''
 def getDataPath(fileName):
     '''
          获取data目录文件路径
@@ -60,6 +62,28 @@ def getDataRegularPath(fileName):
         获取data/prepare目录下路径
     '''
     return os.path.join(index.ROOTPATH,index.DATA,index.REGULAR,fileName)
+
+def getDataRegularProxyClassifyPath(fileName):
+    '''
+        获取data/prepare目录下路径
+    '''
+    return os.path.join(index.ROOTPATH,index.DATA,index.REGULAR,index.PROXYCLASSIFY,fileName)
+
+def getDataRegularProxyActionClassifyPath(fileName):
+    '''
+        获取data/prepare目录下路径
+    '''
+    return os.path.join(index.ROOTPATH,index.DATA,index.REGULAR,index.PROXYACTIONCLASSIFY,fileName)
+
+'''
+    获取目录路径
+'''
+def getDataRegularProxyClassifyDir():
+    '''
+        获取目录路径
+    '''
+    return os.path.join(index.ROOTPATH,index.DATA,index.REGULAR,index.PROXYCLASSIFY)
+
 
 def writeContent2Excel(infoList,outputFilePath):
     """

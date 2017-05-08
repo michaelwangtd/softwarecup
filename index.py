@@ -5,6 +5,10 @@ import os
 
 ROOTPATH = os.path.dirname(__file__)
 
+
+## dir
 DATA = 'data'
 PREPARE = 'prepare'
 REGULAR = 'regular'
+PROXYCLASSIFY = 'proxyclassify'
+PROXYACTIONCLASSIFY = 'proxyactionclassify'
