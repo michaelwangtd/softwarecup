@@ -10,9 +10,9 @@ if __name__ == '__main__':
     """
         统计所有代理行为纪录的条数
     """
-    # inFileName = 'allProxyAction.csv'
-    # inFilePath = inout.getDataPreparePath(inFileName)
-    #
-    # data = Series.from_csv(inFilePath,header=None)
-    # data.plot()
-    # pyplot.show()
+    inFileName = 'allProxyAction.csv'
+    inFilePath = inout.getDataPreparePath(inFileName)
+
+    data = Series.from_csv(inFilePath,header=None)
+    data.plot()
+    pyplot.show()

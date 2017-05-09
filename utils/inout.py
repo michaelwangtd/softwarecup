@@ -75,6 +75,12 @@ def getDataRegularProxyActionClassifyPath(fileName):
     '''
     return os.path.join(index.ROOTPATH,index.DATA,index.REGULAR,index.PROXYACTIONCLASSIFY,fileName)
 
+def getDataModelPipelinePath(fileName):
+    '''
+        获取data/prepare目录下路径
+    '''
+    return os.path.join(index.ROOTPATH,index.DATA,index.MODELPIPELINE,fileName)
+
 '''
     获取目录路径
 '''

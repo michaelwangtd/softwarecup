@@ -79,7 +79,7 @@ if __name__ == '__main__':
        2 统计所有代理行为纪录的条数
         并将统计信息生成文件
     """
-    # # 获取目录
+    # # # 获取目录
     # inProxyClassifyDir = inout.getDataRegularProxyClassifyDir()
     # # 获取目录下文件名列表
     # csvNameList = os.listdir(inProxyClassifyDir)
@@ -134,8 +134,9 @@ if __name__ == '__main__':
         proxyActionClassifyDicList = getProxyActionClassifyDicList(proxyInfoList)
         # 分类列表写出到文件
         for k,vList in proxyActionClassifyDicList.items():
+            print k
             vList = list(set(vList))
-            if len(vList)>90:
+            if len(vList)>90 and 'O1002' not in k.split('-'):
                 outputList = vList
                 outputFileName = k+'_model_trial.csv'
                 flage = True
