@@ -15,6 +15,23 @@ import numpy as np
 import codecs
 
 
+testList = [1,2,3,4,5]
+arr = np.array(testList)
+print arr
+print type(arr)
+
+re = list(arr)
+print type(re)
+print re
+re.append(6)
+print re
+
+# print arr[:3]
+# print arr[3:]
+
+
+
+
 # inFilePath = inout.getDataPath('demo_proxy1005.csv')
 # data = pd.read_csv(inFilePath,header=None)
 # print data

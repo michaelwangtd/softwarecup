@@ -2,57 +2,66 @@
 # -*- coding:utf-8 -*-
 
 from pandas import Series
-from matplotlib import pyplot
+import pandas as pd
+from matplotlib import pyplot as plt
 from utils import inout
 from pandas import DataFrame
 from sklearn.ensemble import RandomForestRegressor
 from pandas import read_csv
 from sklearn.feature_selection import RFE
+import numpy as np
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.graphics.tsaplots import plot_acf,plot_pacf
 
 if __name__ == '__main__':
     # inputFileName = 'car_sales.csv'
-    inputFileName = 'O1005_O1005_model_trial.csv'
+    inputFileName = 'O1005-O1005_model_trial.csv'
     inputFilePath = inout.getDataModelPipelinePath(inputFileName)
-    out1FileName = 'cycle_adjusted.csv'
+    out1FileName = 'O1005_diff_10.csv'
     out1FilePath = inout.getDataModelPipelinePath(out1FileName)
     out2FileName = 'lags_features_origin.csv'
     out2FilePath = inout.getDataModelPipelinePath(out2FileName)
     out3FileName = 'lags_features_clean.csv'
     out3FilePath = inout.getDataModelPipelinePath(out3FileName)
 
-    data = Series.from_csv(inputFilePath,header=0)
+    diff_window = 10
+    lags_feature_num = 4
+
+    # data = Series.from_csv(inputFilePath,header=0)
+    data = pd.read_csv(inputFilePath,header=None)
+    ts = data[4]
+    ts.index = data[0]
+    ts_log = np.log(ts)
 
     ##
-    # print type(data)
-    # print data
-    # print data.head(5)
-    # data.plot()
-    # pyplot.show()
+    # ts.plot()
+    # plt.show()
 
     ##
-    # differenced = data.diff(10)
-    # print differenced
-    # differenced = differenced[12:]
-    # print differenced
-    # differenced.to_csv(out1FilePath)
-    # differenced.plot()
-    # pyplot.show()
-
-    ## autocorrelation
+    # diff_10 = ts_log.diff(diff_window)
+    # diff_10.dropna(inplace=True)
+    # diff_10.to_csv(out1FilePath)
+    # diff_10.plot()
+    # plt.show()
+    # adftest = adfuller(diff_10)
+    # print 'adf p-value:',adftest[1]
+    # plot_acf(diff_10,lags=31)
+    # plt.show()
 
     ## lags
-    # print type(data.values)
-    # print data.values
+    # print type(ts_log.values)
+    # # print ts_log.values
     # dataframe = DataFrame()
-    # for i in range(10,0,-1):
-    #     dataframe['t-'+str(i)] = data.shift(i)
-    # dataframe['t'] = data.values
-    # print dataframe.head(10)
+    # for i in range(diff_window,0,-1):
+    #     dataframe['t-'+str(i)] = ts_log.shift(i)
+    # dataframe['t'] = ts_log.values
+    # # print dataframe.head(10)
     # dataframe.to_csv(out2FilePath,index=False)
-    # dataframe = dataframe[10:]
+    # # dataframe = dataframe[10:]
+    # dataframe.dropna(inplace=True)
     # dataframe.to_csv(out3FilePath,index=False)
 
-    ##
+    ## 根据重要性选择滞后特征
     # dataframe = read_csv(out3FilePath,header=0)
     # array = dataframe.values
     # # print array
@@ -66,16 +75,16 @@ if __name__ == '__main__':
     # print names
     # ticks = [i for i in range(len(names))]
     # print ticks
-    # pyplot.bar(ticks,model.feature_importances_)
-    # pyplot.xticks(ticks,names)
-    # pyplot.show()
+    # plt.bar(ticks,model.feature_importances_)
+    # plt.xticks(ticks,names)
+    # plt.show()
 
     ##
     dataframe = read_csv(out3FilePath, header=0)
     array = dataframe.values
     x = array[:, 0:-1]
     y = array[:, -1]
-    rfe = RFE(RandomForestRegressor(n_estimators=500, random_state=1),4)
+    rfe = RFE(RandomForestRegressor(n_estimators=500, random_state=1),lags_feature_num)
     fit = rfe.fit(x, y)
     print fit.support_
     print 'selected features:'
@@ -85,8 +94,8 @@ if __name__ == '__main__':
             print names[i]
     names = dataframe.columns.values[0:-1]
     ticks = [i for i in range(len(names))]
-    pyplot.bar(ticks,fit.ranking_)
-    pyplot.xticks(ticks,names)
-    pyplot.show()
+    plt.bar(ticks,fit.ranking_)
+    plt.xticks(ticks,names)
+    plt.show()
 
 
