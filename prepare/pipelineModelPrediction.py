@@ -37,8 +37,8 @@ if __name__ == '__main__':
     lags_feature_list = ['t-6','t-3','t-2','t-1','t']
     forecast_len = 11
 
-    # inFileName = 'lags_features_clean.csv'
-    inFileName = 'lags_features_clean_O1002.csv'
+    inFileName = 'lags_features_clean.csv'
+    # inFileName = 'lags_features_clean_O1002.csv'
     inFilePath = inout.getDataModelPipelinePath(inFileName)
     data = pd.read_csv(inFilePath,header=0)
     data = data[lags_feature_list].values
